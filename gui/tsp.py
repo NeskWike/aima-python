@@ -1,10 +1,13 @@
 from tkinter import *
 from tkinter import messagebox
-
-import utils
-from search import *
+import os.path
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
+import utils 
+from search import *
+
+
 
 distances = {}
 
@@ -141,7 +144,7 @@ class TSPGui():
         map_canvas.grid(row=3, columnspan=10)
         current = Node(problem.initial)
         map_canvas.delete("all")
-        self.romania_image = PhotoImage(file="../images/romania_map.png")
+        self.romania_image = PhotoImage(file="C:/Users/jeana/Documents/Dev/Learning/Python/AI/aima-python/images/romania_map.png")
         map_canvas.create_image(self.canvas_width / 2, self.canvas_height / 2,
                                 image=self.romania_image)
         cities = current.state
@@ -260,7 +263,7 @@ class TSPGui():
         while True:
             population = [mutate(recombine(*select(2, population, fitness_fn)), self.mutation_rate.get())
                           for _ in range(len(population))]
-            current_best = np.argmax(population, key=fitness_fn)
+            current_best = utils.argmax_random_tie(population, key=fitness_fn)
             if fitness_fn(current_best) > fitness_fn(all_time_best):
                 all_time_best = current_best
                 self.cost.set("Cost = " + str('%0.3f' % (-1 * problem.value(all_time_best))))
@@ -294,7 +297,7 @@ class TSPGui():
         current = Node(problem.initial)
         while True:
             neighbors = find_neighbors(current.state, self.no_of_neighbors.get())
-            neighbor = np.argmax_random_tie(neighbors, key=lambda node: problem.value(node.state))
+            neighbor = utils.argmax_random_tie(neighbors, key=lambda node: problem.value(node.state))
             map_canvas.delete('poly')
             points = []
             for city in current.state:

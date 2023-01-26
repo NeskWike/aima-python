@@ -1,12 +1,15 @@
 import os.path
 import random
+import sys
 import time
 from functools import partial
 from tkinter import *
 
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
 from search import astar_search, EightPuzzle
 
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
 
 root = Tk()
 

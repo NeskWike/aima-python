@@ -13,9 +13,11 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 from matplotlib.ticker import MaxNLocator
 
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
 from mdp import *
 
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
 
 matplotlib.use('TkAgg')
 style.use('ggplot')

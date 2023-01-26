@@ -1,10 +1,10 @@
 import os.path
+import sys
 from tkinter import *
-
-from agents import *
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
+from agents import *
 
 class Gui(VacuumEnvironment):
     """This is a two-dimensional GUI environment. Each location may be

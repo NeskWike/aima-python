@@ -73,6 +73,9 @@ target/
 .env
 .idea
 
+# venv
+.venv
+
 # for macOS
 .DS_Store
 ._.DS_Store
